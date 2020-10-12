@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 # gem "rails"
 
-gem "jekyll", "~> 3.8"
+#gem "jekyll", "~> 3.8"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 # local files : /var/lib/gems/2.4.0/gems/minima-2.5.0
