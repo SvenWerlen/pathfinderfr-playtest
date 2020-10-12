@@ -32,8 +32,8 @@
 			</div>
 		</div>
 		{% include layout-footer.html %}    
-		<script src="/js/jquery/jquery-3.3.1.slim.min.js"></script>
-		<script src="/js/popperjs/popper.min.js"></script>
-		<script src="/js/bootstrap/bootstrap.min.js"></script>
+		<script src="{{ '/js/jquery/jquery-3.3.1.slim.min.js' | append: site.github.build_revision | relative_url }}"></script>
+		<script src="{{ '/js/popperjs/popper.min.js' | append: site.github.build_revision | relative_url }}"></script>
+		<script src="{{ '/js/bootstrap/bootstrap.min.js' | append: site.github.build_revision | relative_url }}"></script>
 	</body>
 </html>
