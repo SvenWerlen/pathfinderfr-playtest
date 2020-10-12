@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |s|
+  s.required_ruby_version = '>= 2.4.0'
   s.name          = 'jekyll-theme-pathfinderfr'
   s.version       = '0.1.0'
   s.license       = 'CC0-1.0'
