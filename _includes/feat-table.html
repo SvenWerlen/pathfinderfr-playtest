@@ -1,0 +1,60 @@
+<!--
+    Crée un tableau de dons avec comme colonnes
+    - non
+    - niveau + rareté
+    - traits (linkified)
+    - résumé + prérequis
+
+    - include.tableTitle : titre du tableau (aucun titre si absent)
+    - include.sortByLevel: trie par niveau + ajoute des séparateurs entre les niveaux
+-->
+
+{% assign dons = dons | sort_ignore_accent_marks: "title" %}
+
+{% if include.sortByLevel %}
+  {% assign dons = dons | sort: "level" %}
+{% endif %}
+
+{% if include.tableTitle %}
+
+<p class="tabletitle">{{include.tableTitle}}</p>
+
+{% endif %}
+
+<table class="table table-sm table-striped table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th style="width: 20%">Nom</th>
+            <th>Niveau</th>
+            <th>Traits</th>
+            <th style="width: 60%">Résumé</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% assign oldLevel = "1" %}
+        {% for don in dons %}
+        {% assign level = don.level | append: "" %}
+        <tr
+            {% if include.sortByLevel and level != oldLevel %}
+            {% assign oldLevel = level %}
+            class="firstlineofsection"
+            {% endif %}
+        >
+            <td><a href="{{don.url}}">{{don.title}}</a></td>
+            <td>
+                {{don.level}}
+                {% unless don.rarity == "C" %}
+                    ({{don.rarity}})
+                {% endunless %}
+            </td>
+            <td>{{don.traits | sort_ignore_accent_marks | pfr_linkify_list: "/traits/" | join: ", "}}</td>
+            <td>
+                {{don.summary | markdownify | remove: '<p>' | remove: '</p>'}}
+                {% if don.prerequisites %}
+                {{don.prerequisites | prepend: "<br/>**Prérequis** " | markdownify | remove: '<p>' | remove: '</p>'}}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,253 @@
+/***********************************/
+/* Entête de page                  */
+/***********************************/
+
+#header {
+    background-image: url("../images/banner.jpg");
+    background-position: right center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-color: #6cc6e0;
+}
+
+/***********************************/
+/* Menu latéral                    */
+/***********************************/
+
+.site-nav {
+    margin-top: 1em;
+    font-size: .8rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.site-nav ul {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.site-nav a { color: #212529; }
+.site-nav a:hover { color: #007bff; text-decoration: none; }
+.site-nav li { display: block; }
+.site-nav li.active { font-weight: bold; }
+
+.site-nav ul.level-2 { font-size: .75rem; line-height: .8rem; }
+.site-nav ul.level-2 a, .site-nav ul.level-2 span { display: block; padding: .125rem .5rem; color: #99979c; }
+.site-nav ul.level-2 a:hover { color: #007bff; text-decoration: none; }
+
+
+/***********************************/
+/* Table des matières page         */
+/***********************************/
+
+.col-toc {
+    order: 2;
+    position: sticky;
+    top: 0;
+    height: calc(100vh);
+    overflow-y: auto;
+    
+    font-size: .875rem;
+}
+
+.page-nav {
+    padding-top: 1em;
+    font-size: .8rem;
+}
+
+.page-nav .section-nav {
+    padding-left: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.page-nav .section-nav ul {
+    padding-left: 1rem;
+}
+
+.page-nav .toc-entry {
+    display: block;
+}
+
+.page-nav .toc-entry a {
+    display: block;
+    padding: .125rem 1.5rem;
+    color: #99979c;
+}
+
+.page-nav .toc-entry a:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/***********************************/
+/* Contenu <main>                  */
+/***********************************/
+
+.col-main {
+    order: 1;
+}
+
+
+main h1.page-title {
+    margin-top: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+main mark {
+    color: #C00;
+    text-decoration: underline;
+
+}
+
+#markdown-toc {
+    background-color: #DDD;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+main dd {
+    margin-left: .6rem;
+    padding-left: .6rem;
+    border-left: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+main blockquote.inset {
+    margin: 0 3rem;
+
+}
+
+/***********************************/
+/* Relatif aux tables              */
+/***********************************/
+
+.tabletitle {
+    font-size: 120%;
+    margin-bottom: 2px;
+    text-align: right;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: bold;
+}
+
+tr.firstlineofsection td {
+    border-top-color: #666;
+}
+
+.tablenotes {
+    font-size: small;
+    margin-top: -1rem;
+    border-top: 2px solid #dee2e6;
+}
+
+table.no-border td {
+    border-width: 0;
+} 
+
+table.no-head thead {
+    display: none;
+}
+
+/* BLOCS POURS DONS, SORTS, ... */
+
+blockquote.block {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+}
+
+blockquote.block h3 {
+    background-color: #ddd;
+    font-size: 1.3rem;
+    margin: -.5rem -.5rem 0 -.5rem;
+    padding: .3rem;
+}
+
+blockquote.block .action-icon {
+    vertical-align: baseline;
+    height: 1rem;
+    margin-right: .3rem;
+}
+
+blockquote.block .sm-action-icon {
+    vertical-align: baseline;
+    height: 1rem;
+}
+
+blockquote.block h3 strong {
+    float: right;
+}
+
+blockquote.block p,
+blockquote.block hr {
+    margin: 4px 0;
+}
+
+blockquote.block ul { padding-left: 1rem; margin: 0; }
+
+blockquote.block .traits {
+     font-variant: small-caps;
+     text-transform: lowercase;
+}
+
+blockquote.block.action1 h3::before { content: ""; display: inline-block; width: 1rem; height: 1rem; background-image: url("../images/1action.png"); background-size: 1rem 1rem; margin-right: .3rem; }
+blockquote.block.action2 h3::before { content: ""; display: inline-block; width: 1.3rem; height: 1rem; background-image: url("../images/2actions.png"); background-size: 1.3rem 1rem; margin-right: .3rem; }
+blockquote.block.action3 h3::before { content: ""; display: inline-block; width: 2rem; height: 1rem; background-image: url("../images/3actions.png"); background-size: 2rem 1rem; margin-right: .3rem; }
+blockquote.block.reaction h3::before { content: ""; display: inline-block; width: 1.1rem; height: 1rem; background-image: url("../images/réaction.png"); background-size: 1.1rem 1rem; margin-right: .3rem; }
+blockquote.block.actionlibre h3::before { content: ""; display: inline-block; width: 1rem; height: 1rem; background-image: url("../images/actionlibre.png"); background-size: 1rem 1rem; margin-right: .3rem; }
+
+/************************/
+/* Bloc "En Bref..."    */
+/************************/
+
+.summary {
+    border-left: solid 2px #666;
+    background-color: #eee;
+    padding: .5rem;
+    margin-bottom: 1rem;
+}
+
+.summary h3 {
+    margin: 0 0 .5rem 0;
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.summary > ul {
+    margin: 0;
+    padding: 0 0 0 .3rem;
+    
+    list-style: none;
+    list-style-position: outside;
+}
+
+.summary :last-child {
+    margin-bottom: 0;
+}
+
+
+/* ANCIENNES RÈGLES */
+
+/*
+blockquote.spell,
+blockquote.feat,
+blockquote.trait {
+    border: solid 1px #BBB;
+    padding: 0.5rem;
+}
+
+blockquote.spell h3,
+blockquote.feat  h3,
+blockquote.trait h3 {
+    font-size: 1.4rem;
+    margin: -.5rem;
+    margin-bottom: 0;
+    padding: .3rem;
+    background-color: #666;
+    color: #fff;
+}
+
+blockquote.spell p:last-child,
+blockquote.feat  p:last-child,
+blockquote.trait p:last-child {
+    margin-bottom: 0
+}
+*/

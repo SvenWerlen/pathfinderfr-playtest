@@ -1,0 +1,153 @@
+---
+layout: default
+---
+<blockquote class="block">
+    <h3>
+        {% assign action = page.action | append: "" %}
+        {% case action %}
+        {% when '1' %}
+            <img class="action-icon" src="../images/1action.png" title="1 action" />
+        {% when '2' %}
+            <img class="action-icon" src="../images/2actions.png" title="2 actions" />
+        {% when '3' %}
+            <img class="action-icon" src="../images/3actions.png" title="3 actions" />
+        {% when 'R' %}
+            <img class="action-icon" src="../images/réaction.png" title="réaction" />
+        {% when 'L' %}
+            <img class="action-icon" src="../images/actionlibre.png" title="action libre" />
+        {%- endcase -%}
+        {{ page.title }}
+        <strong>
+            {{ page.type }} {{ page.level }}
+            {% case page.rarity %}
+            {% when 'PC' %}
+              (Peu commun)
+            {% when 'R' %}
+              (Rare)
+            {% when 'U' %}
+              (Unique)
+            {%- endcase -%}
+        </strong>
+    </h3>
+    {% if page.traits %}
+        <p class="traits">{{ page.traits | sort | pfr_linkify_list: "/traits/" | join: ", "}}</p>
+    {%- endif -%}
+<!-- Sorts -->
+    {% if page.castingtime %}
+        <p><strong>Incantation</strong> {{ page.castingtime }}</p>
+    {%- endif -%}
+    {% if page.casting %}
+        <p>
+            <strong>Incantation</strong>
+            {% assign firststep = true %}
+            {% for step in page.casting %}
+                {% if step.action %}
+                    {% unless first %}
+                        ,
+                    {% endunless %}
+                    {% assign action = step.action | append: "" %}
+                    {% case action %}
+                    {% when '1' %}
+                        <img class="sm-action-icon" src="../images/1action.png" title="1 action" />
+                    {% when '2' %}
+                        <img class="sm-action-icon" src="../images/2actions.png" title="2 actions" />
+                    {% when '3' %}
+                        <img class="sm-action-icon" src="../images/3actions.png" title="3 actions" />
+                    {% when 'R' %}
+                        <img class="sm-action-icon" src="../images/réaction.png" title="réaction" />
+                    {% when 'L' %}
+                        <img class="sm-action-icon" src="../images/actionlibre.png" title="action libre" />
+                    {%- endcase -%}
+                {% endif %}
+                {{ step.description }}
+                {% assign firststep = false %}
+            {% endfor %}
+        </p>
+    {%- endif -%}
+<!-- Dons -->
+    {% if page.prerequisites %}
+        <p><strong>Prérequis</strong> {{ page.prerequisites | markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+    {% if page.frequency %}
+        <p><strong>Fréquence</strong> {{ page.frequency }}</p>
+    {%- endif -%}
+    {% if page.cost %}
+        <p><strong>Coût</strong> {{ page.cost | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+    {%- endif -%}
+<!-- Trésors -->
+    {% if page.price %}
+        <p><strong>Prix</strong> {{ page.price }}</p>
+    {%- endif -%}
+    {% if page.ammunition %}
+        <p><strong>Munition</strong> {{ page.ammunition }}</p>
+    {%- endif -%}
+    {% if page.methodOfUse %}
+        <p><strong>Méthode d'utilisation</strong> {{ page.methodOfUse }}</p>
+    {%- endif -%}
+    {% if page.bulk %}
+        <p><strong>Encombrement</strong> {{ page.bulk }}</p>
+    {%- endif -%}
+    {% if page.activation %}
+        <p>
+            <strong>Activation</strong>
+            {% assign firststep = true %}
+            {% for step in page.activation %}
+                {% if step.action %}
+                    {% unless first %}
+                        ,
+                    {% endunless %}
+                    {% assign action = step.action | append: "" %}
+                    {% case action %}
+                    {% when '1' %}
+                        <img class="sm-action-icon" src="../images/1action.png" title="1 action" />
+                    {% when '2' %}
+                        <img class="sm-action-icon" src="../images/2actions.png" title="2 actions" />
+                    {% when '3' %}
+                        <img class="sm-action-icon" src="../images/3actions.png" title="3 actions" />
+                    {% when 'R' %}
+                        <img class="sm-action-icon" src="../images/réaction.png" title="réaction" />
+                    {% when 'L' %}
+                        <img class="sm-action-icon" src="../images/actionlibre.png" title="action libre" />
+                    {%- endcase -%}
+                {% endif %}
+                {{ step.description }}
+                {% assign firststep = false %}
+            {% endfor %}
+        </p>
+    {%- endif -%}
+    {% if page.onset %}
+        <p><strong>Onset</strong> {{ page.onset }}</p>
+    {%- endif -%}
+<!-- Partie commune -->
+    {% if page.trigger %}
+        <p><strong>Déclencheur</strong> {{ page.trigger | markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+    {% if page.requirements %}
+        <p><strong>Condition</strong> {{ page.requirements | markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+<!-- Rituels -->
+    {% if page.secondarycasters %}
+        <p><strong>Lanceurs secondaires</strong> {{ page.secondarycasters| markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+    {% if page.proficiency %}
+        <p><strong>Formation</strong> {{ page.proficiency| markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+<!-- Sorts -->
+    {% if page.range %}
+        <p><strong>Portée</strong> {{ page.range | markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+    {% if page.area %}
+        <p><strong>Zone</strong> {{ page.area | markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+    {% if page.targets %}
+        <p><strong>Cible(s)</strong> {{ page.targets | markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+    {% if page.duration %}
+        <p><strong>Durée</strong> {{ page.duration | markdownify | remove: '<p>' | remove: '</p>'}}</p>
+    {%- endif -%}
+    <!-- Description -->
+    {% if page.traits or page.prerequisites or page.frequency or page.cost or page.trigger or page.requirements or page.price or page.ammunition or page.methodOfUse or page.bulk or page.activation or page.onset or page.casting or page.secondarycasters or page.proficiency or page.range or page.area or page.targets or page.duration %}
+        <hr/>
+    {%- endif -%}
+    {{content}}
+</blockquote>

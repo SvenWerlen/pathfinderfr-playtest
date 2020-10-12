@@ -1,87 +1,39 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-
-{% seo %}
-  </head>
-
-  <body>
-
-    <table id="wrapper">
-    <tbody><tr>
-      <td id="margin-l" rowspan="2"></td>
-      <td id="page">
-        <div id="header">
-        
-          <div id="userpanel"></div>  
-          <div id="banner">
-            <span>Pathfinder-FR</span>
-          </div>
-          
-          <div id="nav">
-            <ul>
-              <li id="HomeTab"><a href="javascript:alert('En construction!')" class="home"><span>Accueil</span></a></li>
-              <li id="BlogTab"><span class="bullet"><a href="javascript:alert('En construction!')" class="blog"><span>Blog</span></a></span></li>
-              <li id="WikiTabber"><span class="bullet"><a href="javascript:alert('En construction!')" class="wikis"><span>Wikis</span></a></span></li>
-              <li id="ForumsTab"><span class="bullet"><a href="javascript:alert('En construction!')" class="forum"><span>Forum</span></a></span></li>
-              <li id="MediaTab"><span class="bullet"><a href="javascript:alert('En construction!')" class="galerie"><span>Galerie</span></a></span></li>
-              <li id="PartiesTab"><span class="bullet"><a href="javascript:alert('En construction!')" class="parties"><span>Parties</span></a></span></li>
-              <li id="SearchTab"><a href="javascript:alert('En construction!')" class="search"><span>Recherche</span></a></li>
-              <li id="ContactTab"><a href="javascript:alert('En construction!')" class="contact"><span>Contact</span></a></li>
-            </ul>
-          </div>
-          </div>
-                    
-          <div id="container">
-            <div id="container-tl">
-              <div id="sidebar">
-                <h1 class="separator">Infos</h1>
-              </div>
-
-              <div id="container-tr">
-                <div id="content">
-                
-                  <div id="MainHeaderDiv"></div>
-                  <div id="PageInternalHeaderDiv"></div>
-                                    
-                  <!-- MAIN SECTION -->
-                  <div id="PageContentDiv">
-                    {{ content }}
-                  </div>
-                  
-                  
-                  <div id="PageAttachmentsDiv" style="position: absolute; left: 10000px; display: none;">
-                  </div>
-
-
-                  <!-- FOOTER -->
-                  <div id="PageInternalFooterDiv"><div style="border: 1px solid #4b3124; background-color: #f3efe2; padding: 3px; margin: 12px 0 0 0; clear: both">
-                    <i>Le contenu officiel de ce wiki appartient à et a été utilisé avec l'autorisation de <a class="externallink" href="http://www.black-book-editions.fr/" title="Black Book Editions" target="_blank">Black Book Editions</a>.<br>
-                        Pathfinder-RPG est une création de <a class="externallink" href="http://paizo.com/" title="Paizo Publishing" target="_blank">Paizo Publishing</a>.<br>
-                        Vous pouvez réemployer des extraits du texte officiel à condition de mentionner clairement des liens vers <a class="externallink" href="http://paizo.com/" title="Paizo Publishing" target="_blank">Paizo Publishing</a>,<a class="externallink" href="http://www.black-book-editions.fr/" title="Black Book Editions" target="_blank">Black Book Editions</a> et <a class="externallink" href="http://www.pathfinder-fr.org" title="Pathfinder-FR" target="_blank">Pathfinder-FR</a><br>
-                        Ce site se base sur les licences <a class="externallink" href="http://www.pathfinder-fr.org/Wiki/OGL.ashx" title="Open Game License" target="_blank">Open Game License</a> et <a class="externallink" href="http://www.pathfinder-fr.org/Wiki/PCUP.ashx" title="Pathfinder Community Use Policy" target="_blank">Pathfinder Community Use Policy</a>.</i>
-                  </div>
-                </div>
-                <div id="MainFooterDiv">
-                  <!-- Used for layout purposes only -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </td>
-      <td id="margin-r" rowspan="2"></td>
-    </tr>
-    <tr>
-      <td id="footer">
-        <p>La gamme Pathfinder est une création de <a href="http://www.paizo.com/" target="_blank">Paizo Publishing</a> traduite en français par <a href="http://www.black-book-editions.fr/">Black Book Editions</a>.</p>
-        <p>Ce site se base sur les licences <a href="http://www.pathfinder-fr.org/Wiki/OGL.ashx">Open Game License</a> et <a href="http://www.pathfinder-fr.org/Wiki/PCUP.ashx">Pathfinder Community Use Policy et les conditions d'utilisation BBE</a>.</p>
-      </td>
-    </tr>
-  </tbody></table>  
+<html>
+{%- include layout-head.html -%}
+	<body>
+		{%- include layout-header.html -%}
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-md-3 col-lg-2 d-none d-md-block col-sidebar">
+					{%- include layout-sidebar.html -%}
+				</div>
+				{% if page.toc %}
+				<div class="d-none d-xl-block col-xl-2 col-toc">
+					<nav class="page-nav">
+						{{ content | toc_only }}
+					</nav>
+				</div>
+				<main class="col-12 col-sm-12 col-md-9 col-lg-10 col-xl-8 col-main">
+				{%- else -%}
+				<main class="col-12 col-sm-12 col-md-9 col-lg-10 col-main">
+				{%- endif -%}
+					{%- unless page.hidetitle or layout.hidetitle -%}
+						{% if page.title %}
+					<h1 class="page-title">{{ page.title }}</h1>
+						{%- endif -%}
+					{%- endunless -%}
+					{{ content }}
+					<hr />
+					<div>
+						<a href="https://gitlab.com/pathfinder-fr/pf2-jekyll/blob/master/{{ page.path }}" title="Afficher le fichier source d'origine sur le projet du site" class="btn btn-link"><i class="fas fa-code"></i> Source</a>
+					</div>
+				</main>
+			</div>
+		</div>
+		{% include layout-footer.html %}    
+		<script src="/js/jquery/jquery-3.3.1.slim.min.js"></script>
+		<script src="/js/popperjs/popper.min.js"></script>
+		<script src="/js/bootstrap/bootstrap.min.js"></script>
+	</body>
 </html>

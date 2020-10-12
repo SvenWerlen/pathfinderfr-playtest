@@ -1,0 +1,76 @@
+---
+layout: default
+---
+{{ content }}
+
+{% assign my_collection = site[page[collection]] | sort_ignore_accent_marks: "title" %}
+
+<table class="table table-sm table-striped table-hover
+    {% if page.smalltable %}small{% endif %}">
+    <thead class="thead-light">
+    <tr>
+        <th>Nom</th>
+        {% for col in page.cols %}
+            <th
+                {% if col.info %}
+                title=" {{col.info}} "
+                {%- endif -%}
+                {% if col.colsize %}
+                style="width: {{col.colsize}}"
+                {%- endif -%}
+             > {{col.title}} </th>
+        {%- endfor -%}
+        {% if page.includeSource %}
+            <th>Source</th>
+        {%- endif -%}
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in my_collection %}
+        <tr>
+            <td><a href="{{ item.url }}">{{ item.title }}</a></td>
+            {% for col in page.cols %}
+                <td>
+                {% if col.isMultiline %}
+                    {% for row in col.rows %}
+                        {% if row != col.rows.first %}
+                            <br/>
+                        {%- endif -%}
+                        <strong>{{ row.title }}</strong> :
+                        {% if row.isAList and item[row.attribute] %}
+                          {{ item[row.attribute] | sort_ignore_accent_marks | join: row.separator }}
+                        {% else %}
+                            {{ item[row.attribute] }}
+                        {%- endif -%}
+                    {%- endfor -%}
+                {% elsif col.isAList and item[col.attribute] %}
+                    {% if col.linkify %}
+                        {{ item[col.attribute] | sort_ignore_accent_marks | pfr_linkify_list: col.linkify | join: col.separator }}
+                    {% else %}
+                        {{ item[col.attribute] | sort_ignore_accent_marks | join: col.separator }}
+                    {% endif %}
+                {% elsif col.isALink %}
+                    <a href="
+                        {% if item[col.fileName] %}
+                            {{ col.urlPrefix }}{{ item[col.fileName] }}{{ col.urlSuffix }}
+                        {% else %}
+                            {% assign file = item[col.pageName] | replace: " ", "-" | downcase %}
+                            {{ col.urlPrefix }}{{ file }}{{ col.urlSuffix }}
+                        {%- endif -%}
+                    ">
+                        {{ item[col.attribute] }}
+                    </a>
+                {% elsif col.markdownify %}
+                    {{ item[col.attribute] | markdownify | remove: "<p>" | remove: "</p>" }}
+                {% else %}
+                    {{ item[col.attribute] }}
+                {%- endif -%}
+                </td>
+            {%- endfor -%}
+            {% if page.includeSource %}
+                <td> {{item.source}} </td>
+            {%- endif -%}
+        </tr>
+    {%- endfor -%}
+</tbody>
+</table>
