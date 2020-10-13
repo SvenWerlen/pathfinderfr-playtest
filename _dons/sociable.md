@@ -1,35 +1,15 @@
 ---
-title: Sociable
-titleEN: Hobnobber
-source: "Playtest Pathfinder"
 layout: block
-
-#PARTIE PROPRE AUX DONS
-
-#Featskill: compétence à laquelle un don est liée
-#           (rien) si général ou utilisable avec toutes compétences
-featskill: Diplomatie
-
-#PARTIE PROPRE AUX BLOCS TECHNIQUES
-
-#Action: (rien), 1/2/3 (1/2/3 action[s]), R (réaction), L (action libre)
-action:
-type: don
 level: 1
-#Rareté : C (commun), PC (peu commun), R (rare), U (unique)
+prerequisites: ''
 rarity: C
-
+source: ??
+summary: '-'
+title: Sociable
+titleEN: Sociable
 traits:
-  - général
-  - compétence
-prerequisites: Entraîné en Diplomatie
-frequency:
-cost:
-trigger:
-requirements:
-
-summary: "Vous pouvez [Recueillir des informations](/ch4-compétences/diplomatie.html#recueillir-des-informations) plus efficacement."
+- general
 
 ---
 
-Vous pouvez tenter de [Recueillir des informations](/ch4-compétences/diplomatie.html#recueillir-des-informations) deux fois plus souvent que la normale pendant une journée de temps libre (généralement de 6 à 8 tentatives au lieu de 3 à 4).
+<p><span id="ctl00_MainContent_DetailedOutput">Vous êtes extrêmement extraverti et vous passez souvent votre temps à faire la fête ou à socialiser. Vous êtes qualifié en Diplomatie (ou en une autre compétence de votre choix si vous étiez déjà qualifié en Diplomatie) et vous obtenez le don de compétence @Compendium[pf2e.feats-srd.4RjDxgvNXNl5GG9d]{Animal social}.&nbsp;</span></p>

@@ -1,35 +1,17 @@
 ---
-title: Nageur rapide
-titleEN: Quick Swim
-source: "Playtest Pathfinder"
 layout: block
-
-#PARTIE PROPRE AUX DONS
-
-#Featskill: compétence à laquelle un don est liée
-#           (rien) si général ou utilisable avec toutes compétences
-featskill: Athlétisme
-
-#PARTIE PROPRE AUX BLOCS TECHNIQUES
-
-#Action: (rien), 1/2/3 (1/2/3 action[s]), R (réaction), L (action libre)
-action:
-type: don
-level: 7
-#Rareté : C (commun), PC (peu commun), R (rare), U (unique)
+level: 5
+prerequisites: wetlander lizardfolk
 rarity: C
-
+source: ??
+summary: '-'
+title: Nageur rapide
+titleEN: Swift Swimmer
 traits:
-  - général
-  - compétence
-prerequisites: Maître en Athlétisme
-frequency:
-cost:
-trigger:
-requirements:
-
-summary: "Vous progressez plus rapidement quand vous [Nagez](/ch4-compétences/athlétisme.html#nager)."
+- general
 
 ---
 
-Quand vous [Nagez](/ch4-compétences/athlétisme.html#nager), vous vous déplacez de 1 case de plus en cas de réussite et de 2 cases de plus en cas de réussite critique, sans toutefois pouvoir dépasser votre Vitesse.
+<p><span id="ctl00_MainContent_DetailedOutput"><strong>Prérequis</strong> @Compendium[pf2e.ancestryfeatures.dJeiekfqGQ8dkwsO]{Homme-lézard des terres humides}<br></span></p>
+<hr>
+<p>Vous nagez plus vite que la plupart des iruxi. Votre Vitesse de nage passe à 7,5 m.&nbsp;</p>
