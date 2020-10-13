@@ -1,7 +1,7 @@
 ---
 layout: block
 level: 4
-prerequisites: Wizard Dedication
+prerequisites: "D\xE9vouement du magicien"
 rarity: C
 source: ??
 summary: '-'
@@ -12,6 +12,4 @@ traits:
 
 ---
 
-<p><strong>Prérequis </strong> Dévouement du magicien</p>
-<hr>
 <p>Vous gagnez un don de magicien de niveau 1 et 2 de votre choix.</p>

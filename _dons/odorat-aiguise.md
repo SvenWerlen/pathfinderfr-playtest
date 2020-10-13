@@ -1,7 +1,7 @@
 ---
 layout: block
 level: 2
-prerequisites: Acute Vision or darkvision
+prerequisites: "Vision per\xE7ante ou vision dans le noir"
 rarity: C
 source: ??
 summary: '-'
@@ -12,6 +12,4 @@ traits:
 
 ---
 
-<p><strong>Prérequis </strong> Vision perçante ou vision dans le noir</p>
-<hr>
 <p>Quand vous êtes enragé, votre odorat s’affine. Vous gagnez odorat imprécis avec une portée de 9 m</p>
